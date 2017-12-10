@@ -2,7 +2,7 @@ package sam.dungeon.com.dmscreen.model;
 
 import android.support.annotation.NonNull;
 
-public class Monster implements Comparable {
+public class Monster implements Comparable<Monster> {
 
     private Integer id;
     private Integer initiative;
@@ -10,8 +10,11 @@ public class Monster implements Comparable {
     private Integer lives;
     private Integer defense;
     private String attack;
-
     private String  skills;
+
+    public Monster(Integer id){
+        this.id=id;
+    }
 
     public Monster(Integer id, Integer initiative, String name){
         this.id=id;
@@ -91,8 +94,7 @@ public class Monster implements Comparable {
     }
 
     @Override
-    public int compareTo(@NonNull Object o) {
-        Monster other= (Monster) o;
+    public int compareTo(Monster other) {
         if (this.initiative<other.getInitiative()){
             return -1;
         }else if (this.initiative==other.getInitiative()){
